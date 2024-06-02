@@ -1,0 +1,52 @@
+<br>
+    <script>
+        let id = 1;
+        function mark(id)
+        {
+            const parent = document.getElementById(id);
+            parent.children[2].innerHTML = "Done!";
+
+        }
+        function create(title,desc,id)
+        {
+            const outerDiv = document.createElement("div");
+
+            const innerDiv1 = document.createElement("div");
+            const innerDiv2 = document.createElement("div");
+            
+            innerDiv1.innerHTML = title;
+            innerDiv2.innerHTML = desc;
+
+            const button = document.createElement("button");
+            button.innerHTML = "Mark as Read";
+            button.setAttribute("onclick",`mark(${id})`);
+
+        
+            outerDiv.appendChild(innerDiv1);
+            outerDiv.appendChild(innerDiv2);
+            outerDiv.appendChild(button);
+            outerDiv.setAttribute("id",id);
+            
+            return outerDiv;
+        }
+        function addtodo()
+        {
+            const title = document.getElementById('title').value;
+            const desc = document.getElementById("desc").value;
+            const parent = document.getElementById("container")
+ 
+            parent.appendChild(create(title,desc,id++));
+            
+            
+        }
+    </script>
+    <div>
+        <input id = "title" type="text" placeholder="title">
+        <br></br>
+        <input id = "desc" ="text" placeholder="Description">
+        <br></br>
+        <button onclick = "addtodo()">Add todo</button>
+        <div id = "container"></div>
+    </div>
+
+</html>
